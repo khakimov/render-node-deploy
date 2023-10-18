@@ -6,4 +6,4 @@ services:
     autoDeploy: false
     envVars:
       - key: PG_DATABASE_URL
-        value: postgres://twenty:twenty@twenty-postgres:5432/default?connection_limit=1  
+        value: "postgres://twenty:twenty@twenty-postgres:5432/default?connection_limit=1"  
