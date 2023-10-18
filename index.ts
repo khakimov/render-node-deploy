@@ -1,14 +1,18 @@
-import { serve } from "https://deno.land/std@0.123.0/http/server.ts";
+import { ConfigService } from '@nestjs/config';
 
-const port = 10000;
+import console from 'console';
 
-const handler = (request: Request): Response => {
-  let body = "Hello from Deno!\n\n";
-  body += "Your user-agent is:\n\n";
-  body += request.headers.get("user-agent") || "Unknown";
+import { DataSource } from 'typeorm';
 
-  return new Response(body, { status: 200 });
-};
+const configService = new ConfigService();
 
-console.log(`HTTP webserver running on port ${port}.`);
-await serve(handler, { hostname: "0.0.0.0", port: port });
+console.log(configService);
+console.log("process.env: ", process.env);
+//undefined
+console.log(configService.get<string>('PG_DATABASE_URL'));
+
+export const connectionSource = new DataSource({
+  type: 'postgres',
+  logging: true,
+  url: configService.get<string>('PG_DATABASE_URL'),
+});
