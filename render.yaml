@@ -4,6 +4,6 @@ services:
   env: docker
   dockerfilePath: ./Dockerfile
   autoDeploy: false
-  
-- key: PG_DATABASE_URL
-  value: postgres://twenty:twenty@twenty-postgres:5432/default?connection_limit=1  
+  envVars:
+  - key: PG_DATABASE_URL
+    value: postgres://twenty:twenty@twenty-postgres:5432/default?connection_limit=1  
