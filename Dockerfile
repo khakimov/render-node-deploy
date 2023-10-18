@@ -7,5 +7,5 @@ ADD . .
 
 RUN yarn install
 # Compile the main app so that it doesn't need to be compiled each startup/entry.
-RUN npx ts-node ./index.ts
+CMD ["npx", "ts-node", "index.ts"]
 
