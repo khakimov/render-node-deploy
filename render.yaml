@@ -1,7 +1,7 @@
 services:
   - type: web
     name: server
-    env: docker
+    env: node
     dockerfilePath: ./Dockerfile
     autoDeploy: false
     envVars:
